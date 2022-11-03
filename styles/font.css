@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'Hachi Maru Pop';
+    src: url('/styles/fonts/HachiMaruPop-Regular.woff2') format('woff2'),
+        url('/styles/fonts/HachiMaruPop-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('/styles/fonts/Raleway-Bold.woff2') format('woff2'),
+        url('/styles/fonts/Raleway-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('/styles/fonts/Raleway-Thin.woff2') format('woff2'),
+        url('/styles/fonts/Raleway-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('/styles/fonts/Raleway-BoldItalic.woff2') format('woff2'),
+        url('/styles/fonts/Raleway-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('/styles/fonts/Raleway-Regular.woff2') format('woff2'),
+        url('/styles/fonts/Raleway-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('/styles/fonts/Raleway-ThinItalic.woff2') format('woff2'),
+        url('/styles/fonts/Raleway-ThinItalic.woff') format('woff');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('/styles/fonts/Raleway-Italic.woff2') format('woff2'),
+        url('/styles/fonts/Raleway-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bad Script';
+    src: url('/styles/fonts/BadScript-Regular.woff2') format('woff2'),
+        url('/styles/fonts/BadScript-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

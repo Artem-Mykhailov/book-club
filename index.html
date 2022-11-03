@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon/favicon32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon/favicon16.png"
+    />
+    <link
+      rel="mask-icon"
+      href="/favicon/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="/styles/index.css" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#0b0b41" />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"
+    ></script>
+    <script defer type="module" src="/firebase.js"></script>
+    <script defer type="module" src="/animation.js"></script>
+    <title>Книжковий клуб</title>
+  </head>
+  <body>
+    <!-- HEAD SECTION -->
+
+    <section id="head">
+      <header id="header">
+        <div class="background">
+          <div class="header-logo">
+            <a href="#">
+              <img class="logo" src="/images/Logo-res.png" alt="Logo" />
+            </a>
+          </div>
+          <div class="logo-text">
+            <div class="container-logo">
+              <span class="text-blue">Книжковий</span>
+              <span class="text-yellow">Клуб</span>
+              <div class="hidden-block">
+                <span class="text-blue">Слава</span>
+                <span class="text-yellow">Україні!</span>
+              </div>
+            </div>
+          </div>
+          <nav class="header-menu">
+            <ul id="menu">
+              <li class="menu-element">
+                <span class="container-button">
+                  <a href="#about" class="menu-button" data-text="Про&nbsp;нас">
+                    Про нас
+                  </a>
+                </span>
+              </li>
+              <li class="menu-element">
+                <span class="container-button">
+                  <a href="#rules" class="menu-button" data-text="Правила"
+                    >Правила</a
+                  >
+                </span>
+              </li>
+              <li class="menu-element">
+                <span class="container-button">
+                  <a href="#members" class="menu-button" data-text="Учасники">
+                    Учасники
+                  </a>
+                </span>
+              </li>
+              <li class="menu-element">
+                <span class="container-button">
+                  <a href="#rating" class="menu-button" data-text="Рейтинг"
+                    >Рейтинг</a
+                  >
+                </span>
+              </li>
+              <li class="menu-element">
+                <span class="container-button">
+                  <a href="#books" class="menu-button" data-text="Книги">Книги</a>
+                </span>
+              </li>
+              <li class="menu-element">
+                <span class="container-button">
+                  <a href="#contacts" class="menu-button" data-text="Контакти">Контакти</a>
+                </span>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <div id="quote">
+        <div class="quote-block">
+          <h1 class="quote-text">Книга — це мрія, яку ти тримаєш у руках.</h1>
+          <h2 class="quote-author">&#169; Ніл Ґейман</h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION ABOUT -->
+
+    <section id="about">
+      <div class="container">
+        <div class="about-title js-scroll">
+          <h2 class="about-title-header">
+            Вітаємо вас у нашому книжковому клубі!
+          </h2>
+          <p class="about-title-desciption">
+            Тут є деяка інформація про клуб для ознайомлення.
+          </p>
+        </div>
+
+        <ul class="about-cards"></ul>
+      </div>
+    </section>
+
+    <!-- SECTION RULES -->
+
+    <section id="rules">
+      <video autoplay muted loop id="myVideo">
+        <source src="/images/ManBook.mp4" type="video/mp4" />
+      </video>
+
+      <h2 class="section-title">Правила клубу</h2>
+
+      <ul class="rules-cards"></ul>
+    </section>
+
+    <!-- SECTION MEMBERS -->
+
+    <section id="members">
+      <h2 class="section-title">Учасники клубу</h2>
+
+      <div class="swiper members-swiper">
+        <div class="swiper-wrapper"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+    <!-- SECTION RATING -->
+
+    <section id="rating">
+      <div class="background-rating">
+        <div class="container-rating">
+          <h2 class="section-title">Рейтинг прочитаних книг</h2>
+
+          <div class="swiper rating-swiper">
+            <div class="swiper-wrapper rating-list"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+      </div>
+      <div class="overlay"></div>
+      <section id="modal"></section>
+    </section>
+
+    <!-- SECTION BOOKS -->
+
+    <section id="books">
+      <div class="container-books">
+        <h2 class="section-title">Запропоновані книги</h2>
+
+        <div class="swiper books-swiper">
+          <div class="swiper-wrapper books-list"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION CONTACTS -->
+
+    <section id="contacts">
+      <div class="container">
+        <h2 class="section-title">Для того, щоб стати учасником клубу, ви можете написати мені або пані Ірині :)</h2>
+      </div>
+    </section>
+
+    <script type="text/template" id="modalRating">
+      <div class="modalItem">
+        <header class="modal-header">
+          <p class="modal-header-text">Детальніше про книгу</p>
+          <button class="btn-close fa-solid fa-xmark"></button>
+        </header>
+        <p class="modal-author">Автор: {author}</p>
+        <h2 class="modal-title">Стислий опис книги</h2>
+        <p class="modal-description">{description}</p>
+        <h2 class="modal-title">Оцінки учасників клубу</h2>
+        <ul class="modal-marks-list"></ul>
+      </div>
+    </script>
+
+    <a href="#">
+      <div class="icons to-top-icon fas fa-chevron-up"></div>
+    </a>
+  </body>
+</html>
