@@ -100,12 +100,16 @@
               </li>
               <li class="menu-element">
                 <span class="container-button">
-                  <a href="#books" class="menu-button" data-text="Книги">Книги</a>
+                  <a href="#books" class="menu-button" data-text="Книги"
+                    >Книги</a
+                  >
                 </span>
               </li>
               <li class="menu-element">
                 <span class="container-button">
-                  <a href="#contacts" class="menu-button" data-text="Контакти">Контакти</a>
+                  <a href="#contacts" class="menu-button" data-text="Контакти"
+                    >Контакти</a
+                  >
                 </span>
               </li>
             </ul>
@@ -155,7 +159,7 @@
     <section id="members">
       <h2 class="section-title">Учасники клубу</h2>
 
-      <div class="swiper members-swiper">
+      <div class="swiper members-swiper fade-animation">
         <div class="swiper-wrapper"></div>
         <div class="swiper-pagination"></div>
       </div>
@@ -168,7 +172,7 @@
         <div class="container-rating">
           <h2 class="section-title">Рейтинг прочитаних книг</h2>
 
-          <div class="swiper rating-swiper">
+          <div class="swiper rating-swiper fade-animation">
             <div class="swiper-wrapper rating-list"></div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
@@ -185,7 +189,7 @@
       <div class="container-books">
         <h2 class="section-title">Запропоновані книги</h2>
 
-        <div class="swiper books-swiper">
+        <div class="swiper books-swiper fade-animation">
           <div class="swiper-wrapper books-list"></div>
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
@@ -196,8 +200,16 @@
     <!-- SECTION CONTACTS -->
 
     <section id="contacts">
-      <div class="container">
-        <h2 class="section-title">Для того, щоб стати учасником клубу, ви можете написати мені або пані Ірині :)</h2>
+      <div class="background-rating contacts-flex">
+        <div class="container contats-container">
+          <h2 class="section-title contacts-title">
+            Для того, щоб стати учасником клубу, ви можете написати мені або
+            пані Ірині <span class="fa-solid fa-face-smile-wink icon-text"></span>
+          </h2>
+
+          <ul class="contacts-list fade-animation"></ul>
+        </div>
+        <p id="footer">&#169; 2022 Developed by Artem Mykhailov. All rights reserved.</p>
       </div>
     </section>
 

@@ -8,7 +8,7 @@ const toTopIcon = document.querySelector(".to-top-icon");
 const ABOUT_CARD_SELECTOR = ".about-cards-item";
 const ABOUT_TITLE_SELECTOR = ".about-title";
 const SECTION_TITLE_SELECTOR = ".section-title";
-const SWIPER_SELECTOR = ".swiper";
+const FADE_ANIMATION_SELECTOR = ".fade-animation";
 const RULES_CARD_SELECTOR = ".rules-cards-item";
 const SHOW_ABOUT_CARD_CLASS = "showCard";
 const SHOW_CLASS = "show";
@@ -66,7 +66,7 @@ let lastScrollY = window.scrollY;
 window.addEventListener("scroll", () => {
   checkElement(ABOUT_TITLE_SELECTOR, SHOW_CLASS);
   checkElement(SECTION_TITLE_SELECTOR, SHOW_CLASS);
-  checkElement(SWIPER_SELECTOR, SHOW_CLASS);
+  checkElement(FADE_ANIMATION_SELECTOR, SHOW_CLASS);
   getCards();
   if (lastScrollY < window.scrollY) {
     header.classList.add("header--hidden");

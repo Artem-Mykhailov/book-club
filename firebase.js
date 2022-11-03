@@ -26,6 +26,7 @@ const RULES_DB_NAME = "rules";
 const MEMBERS_DB_NAME = "members";
 const RATING_DB_NAME = "rating";
 const BOOKS_DB_NAME = "books";
+const CONTACTS_DB_NAME = "contacts";
 
 const RATING_CARD_ITEM_SELECTOR = ".rating-slide";
 const SHOW_MODAL_CLASS = "show-modal";
@@ -36,6 +37,7 @@ const rulesCardList = document.querySelector(".rules-cards");
 const membersCardList = document.querySelector(".swiper-wrapper");
 const ratingCardList = document.querySelector(".rating-list");
 const booksCardList = document.querySelector(".books-list");
+const contactsCardList = document.querySelector(".contacts-list");
 const modalTemplate = document.querySelector("#modalRating").innerHTML;
 
 const modal = document.querySelector("#modal");
@@ -46,6 +48,7 @@ getCardsData(RULES_DB_NAME, generateRulesCardHTML, rulesCardList);
 getCardsData(MEMBERS_DB_NAME, generateMembersCardHTML, membersCardList);
 getCardsData(RATING_DB_NAME, generateRatingCardHTML, ratingCardList);
 getCardsData(BOOKS_DB_NAME, generateBooksCardHTML, booksCardList);
+getCardsData(CONTACTS_DB_NAME, generateContactCardHTML, contactsCardList);
 
 function getCardsData(dbName, generate, list) {
   const dbRef = ref(db);
@@ -239,6 +242,19 @@ function generateBooksCardHTML(card) {
       </div>
     </div>
   `;
+}
+
+function generateContactCardHTML(card) {
+  return `<li class='contacts-cards-item'>
+      <img src='${card.src}' alt="profile photo" class="contacts-photo"/>
+      <h2 class="contacts-name">${card.name}</h2>
+      <p class="contacts-role">${card.role}</p>
+      <div class="contacts-apps">
+        <a href="${card.telegram}" class="fa-brands fa-telegram contacts-link telegram"></a>
+        <a href="${card.instagram}" class="fa-brands fa-instagram contacts-link instagram"></a>
+      </div>
+    </li>
+    `;
 }
 
 function createMembersSwiper() {
