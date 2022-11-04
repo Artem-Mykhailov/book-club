@@ -1,0 +1,133 @@
+@use "../abstracts" as *;
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 11;
+
+  &.show-modal {
+    display: block;
+  }
+}
+
+.modal {
+  position: absolute;
+  z-index: 12;
+  top: 20%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 650px;
+  min-height: 300px;
+  border-radius: 15px;
+  background-color: $main-light-color;
+  overflow: hidden;
+  color: $main-dark-color;
+  outline: 1px solid $main-dark-color;
+  transform: scale(0);
+  transition: all 0.4s ease-in-out;
+
+  &.show-modal {
+    transform: scale(1);
+  }
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    background-color: $main-brown-color;
+
+    &-text {
+      margin: 0;
+      padding: 5px 0;
+      margin-left: 15px;
+      font-size: 22px;
+      color: $main-light-color;
+    }
+
+    .btn-close {
+      border: none;
+      background-color: transparent;
+      font-size: 24px;
+      margin-right: 15px;
+      color: $main-light-color;
+
+      &:hover {
+        color: $main-dark-color;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-author {
+    margin: 0;
+    margin-top: 20px;
+    margin-left: 25px;
+    font-size: 18px;
+  }
+
+  &-title {
+    text-align: center;
+    margin: 0;
+    margin-top: 12px;
+  }
+
+  &-description {
+    margin: 0;
+    padding: 10px 25px 0 25px;
+    font-size: 15px;
+    text-align: justify;
+    line-height: 20px;
+  }
+
+  &-marks-list {
+    @extend %zero-p-m;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+
+    .mark-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &-name {
+        margin: 0;
+        text-align: center;
+        font-size: 16px;
+      }
+
+      &-value {
+        width: 40px;
+        margin: 0;
+        margin-top: 5px;
+        padding: 10px;
+        text-align: center;
+        border-radius: 50%;
+        font-size: 16px;
+        background-color: $main-brown-color;
+      }
+
+      .good-mark {
+        background-color: #b6d7a8;
+      }
+
+      .mediocre-mark {
+        background-color: #ffe599;
+      }
+
+      .bad-mark {
+        background-color: #ea9999;
+      }
+    }
+  }
+}

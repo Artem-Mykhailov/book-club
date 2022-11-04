@@ -1,0 +1,85 @@
+@use "../abstracts" as *;
+
+.books {
+  @include section-size($main-dark-color);
+
+  &-container {
+    @include container(1400px);
+  }
+
+  .books-swiper {
+    height: 85vh;
+
+    .books-list {
+      margin-top: 70px;
+      padding: 0 70px;
+
+      .flip-card {
+        background-color: transparent;
+        perspective: 1000px;
+
+        .card-container {
+          width: 330px;
+          height: 515px;
+          transform-style: preserve-3d;
+
+          &:hover .flip-card-inner {
+            transform: rotateY(180deg);
+          }
+        }
+
+        &-inner {
+          position: relative;
+          width: 330px;
+          height: 515px;
+          text-align: center;
+          transition: transform 0.8s;
+          transform-style: preserve-3d;
+        }
+
+        &-front,
+        &-back {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+        }
+
+        &-front {
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+          overflow: hidden;
+        }
+
+        &-back {
+          background-color: $main-brown-color;
+          color: $main-light-color;
+          transform: rotateY(180deg);
+
+          .books-card-name {
+            margin: 0;
+            padding: 0 7px;
+            margin-top: 10px;
+            font-style: italic;
+          }
+
+          .books-card-title {
+            margin: 0;
+            margin-top: 7px;
+            font-size: 18px;
+          }
+
+          .books-card-description {
+            margin: 0;
+            margin-top: 10px;
+            padding: 0 15px;
+            font-style: italic;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}

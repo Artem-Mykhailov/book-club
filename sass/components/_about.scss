@@ -1,0 +1,67 @@
+@use "../abstracts" as *;
+
+.about {
+  @include section-size($main-dark-color);
+
+  &-title {
+    padding-top: 40px;
+    letter-spacing: 1px;
+    color: $main-light-color;
+    text-align: center;
+
+    &-header {
+      margin: 0;
+      font-size: 35px;
+    }
+
+    &-desciption {
+      margin: 0;
+      margin-top: 15px;
+      font-size: 24px;
+    }
+  }
+
+  .about-cards {
+    @extend %zero-p-m;
+    min-height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+
+    &-item {
+      min-height: 215px;
+      padding-left: 15px;
+      margin-top: 30px;
+      flex-basis: 400px;
+      color: $main-light-color;
+      border-left: 2px solid $main-light-color;
+      transform: translateX(-100px);
+      opacity: 0;
+      transition: all 1s ease-in-out;
+
+      &:nth-child(2n) {
+        transform: translateX(100px);
+        opacity: 0;
+      }
+
+      &.showCard {
+        transform: translateX(0);
+        opacity: 1;
+      }
+
+      .about-card-title {
+        margin: 0;
+        padding-top: 5px;
+        font-size: 24px;
+      }
+    
+      .about-card-description {
+        margin: 0;
+        margin-top: 10px;
+        line-height: 24px;
+        font-size: 17px;
+      }
+    }
+  }
+}

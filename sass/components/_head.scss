@@ -1,0 +1,177 @@
+@use '../abstracts' as *;
+
+#head {
+    @include section-size;
+    @include background-image("/images/quote2.jpg");
+    padding-top: $nav-height;
+  
+    .header--hidden {
+      transform: translateY(calc(-1 * $nav-height));
+    }
+  
+    #header {
+      width: 100%;
+      display: flex;
+      position: fixed;
+      height: $nav-height;
+      top: 0;
+      left: 0;
+      transition: all 0.5s 0.6s;
+      z-index: 15;
+  
+      .background {
+        width: 100%;
+        display: flex;
+        background-color: transparent;
+        transition: all 0.3s;
+      }
+  
+      .header--background {
+        background-color: #b87d3067;
+      }
+  
+      .header-logo {
+        padding-left: 15px;
+        padding-top: 5px;
+        margin-right: 25px;
+  
+        &-img {
+          display: block;
+          width: 100%;
+        }
+  
+        &-text {
+          @extend %zero-p-m;
+          align-self: flex-end;
+          padding-bottom: 16px;
+          font-size: 30px;
+          font-family: "Hachi Maru Pop", sans-serif;
+          color: $main-light-color;
+          position: relative;
+          overflow: hidden;
+          transition: transform 0.5s;
+          display: block;
+  
+          .hidden-block {
+            display: block;
+            transform: translateY(150%);
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: inherit;
+          }
+  
+          .container-logo {
+            position: relative;
+            display: inline-block;
+            transform: translateY(0%);
+            transition: inherit;
+          }
+  
+          &:hover .container-logo {
+            transform: translateY(-100%);
+          }
+  
+          &:hover .hidden-block {
+            transform: translateY(100%);
+          }
+  
+          .text-blue {
+            color: rgb(39, 92, 238);
+          }
+  
+          .text-yellow {
+            color: rgb(240, 237, 100);
+          }
+        }
+      }
+  
+      .header-menu {
+        flex-grow: 1;
+        display: flex;
+        justify-content: flex-end;
+  
+        #menu {
+          @extend %zero-p-m;
+          padding-top: 10px;
+          flex-basis: 90%;
+          display: flex;
+          justify-content: space-evenly;
+  
+          .menu-element {
+            @extend %zero-p-m;
+  
+            .container-button {
+              position: relative;
+              display: inline-block;
+              padding: 6px;
+  
+              &::before {
+                content: "";
+                width: 0%;
+                height: 100%;
+                position: absolute;
+                background: $main-brown-color;
+                border-radius: 8px;
+                right: 0;
+                top: 0;
+                transition: 0.6s;
+              }
+  
+              &:hover .menu-button::before {
+                width: 100%;
+              }
+  
+              &:hover::before {
+                width: 100%;
+              }
+            }
+  
+            .menu-button {
+              display: block;
+              position: relative;
+              text-decoration: none;
+              color: $main-brown-color;
+              cursor: pointer;
+              font-size: 22px;
+  
+              &::before {
+                content: attr(data-text);
+                position: absolute;
+                color: $main-light-color;
+                width: 0;
+                overflow: hidden;
+                transition: 0.6s;
+              }
+            }
+          }
+        }
+      }
+    }
+  
+    .quote {
+      width: 50vw;
+      height: 80vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+      &-block {
+        text-align: center;
+        flex-basis: 25vw;
+      }
+  
+      &-text,
+      &-author {
+        margin: 0;
+        color: $main-light-color;
+        font-family: "Bad Script", sans-serif;
+        font-weight: normal;
+        font-size: 45px;
+      }
+  
+      &-author {
+        font-size: 35px;
+      }
+    }
+  }

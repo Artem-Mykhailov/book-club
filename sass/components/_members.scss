@@ -1,0 +1,125 @@
+@use "../abstracts" as *;
+
+.members {
+  @include section-size($main-dark-color);
+
+  &-cards {
+    @extend %zero-p-m;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    height: 90vh;
+
+    &-item {
+      min-width: 280px;
+      min-height: 400px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      overflow: hidden;
+      object-fit: cover;
+      transform-origin: center;
+      transform: perspective(800px) rotateY(25deg);
+      transition: 0.5s;
+    }
+  }
+
+  .members-swiper {
+    height: 90vh;
+
+    .members-slide {
+      max-width: 650px;
+      max-height: 575px;
+      margin: 50px;
+      padding: 0px 15px 0px 30px;
+      display: flex;
+      justify-content: center;
+      border-radius: 30px;
+      overflow: hidden;
+
+      .members-card-image {
+        padding-top: 30px;
+        max-width: 350px;
+        min-height: 400px;
+        max-height: 460px;
+        margin-right: 27px;
+
+        .card-image {
+          width: 340px;
+          height: 460px;
+          object-fit: cover;
+          border-radius: 30px;
+        }
+      }
+
+      .members-card-text {
+        position: relative;
+        margin-top: 20px;
+        color: $main-light-color;
+        flex-grow: 1;
+
+        .card-name {
+          font-size: 40px;
+          margin: 0;
+        }
+
+        .card-achievements {
+          margin-top: 10px;
+          display: flex;
+          flex-wrap: wrap;
+          font-size: 13px;
+
+          .admin {
+            @include achieve-common(rgba(240, 53, 53, 0.377));
+          }
+
+          .secretary {
+            @include achieve-common(rgba(184, 173, 23, 0.377));
+          }
+
+          .stepan {
+            @include achieve-common() {
+              background: rgb(15, 71, 187);
+              background: linear-gradient(
+                90deg,
+                rgba(201, 207, 20, 0.493) 30%,
+                rgba(15, 72, 187, 0.486) 65%
+              );
+            }
+          }
+
+          .author {
+            @include achieve-common(rgba(146, 137, 137, 0.377));
+
+            img {
+              width: 20px;
+            }
+          }
+
+          .genre {
+            @include achieve-common(rgba(117, 76, 38, 0.377));
+
+            img {
+              width: 20px;
+            }
+          }
+
+          .book {
+            @include achieve-common(rgba(35, 80, 163, 0.377));
+          }
+
+          .character {
+            @include achieve-common(rgba(56, 110, 35, 0.377));
+          }
+        }
+
+        .card-status {
+          position: absolute;
+          bottom: 15%;
+          left: 14%;
+          font-style: italic;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+@use "../abstracts" as *;
+
+.rules {
+  @include section-size(#1300029a);
+
+  #myVideo {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
+  &-cards {
+    min-height: 680px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+    margin: 0;
+    padding: 50px;
+    list-style: none;
+
+    &-item {
+      position: relative;
+      flex-basis: 17%;
+      display: flex;
+      align-content: start;
+      padding: 10px;
+      padding-top: 28px;
+      border: 2px solid #b87e30;
+      border-radius: 30px;
+      background-color: transparent;
+      overflow: hidden;
+      transform: translateY(150px);
+      opacity: 0;
+      transition: all 1s ease-in-out;
+
+      &.showCard {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      &:hover {
+        background-color: #b87d3060;
+      }
+
+      &:before {
+        content: "\f071";
+        font-family: FontAwesome;
+        position: absolute;
+        top: 3%;
+        left: 45%;
+        color: $main-brown-color;
+        font-size: 26px;
+      }
+
+      .rules-card-description {
+        margin: 0;
+        padding-top: 10px;
+        color: $main-light-color;
+        font-size: 20px;
+        text-align: center;
+      }
+    }
+  }
+}

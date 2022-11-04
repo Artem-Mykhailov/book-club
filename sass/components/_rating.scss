@@ -1,0 +1,118 @@
+@use "../abstracts" as *;
+
+.rating {
+  @include background-image("/images/library.jpg");
+  @include section-size;
+  position: relative;
+
+  &-background {
+    @include section-size(#1300029a);
+  }
+
+  &-container {
+    @include container(1400px);
+  }
+
+  &-swiper {
+    height: 85vh;
+    z-index: 10;
+
+    .rating-list {
+      padding: 50px 100px;
+      margin-top: 70px;
+    }
+  }
+
+  .rating-slide {
+    position: relative;
+
+    .rating-card-place {
+      position: absolute;
+      color: $main-light-color;
+      font-size: 220px;
+      z-index: -1;
+      top: -120px;
+      left: -90px;
+    }
+
+    &:nth-child(1) .rating-card-place {
+      color: #ffd700;
+    }
+
+    &:nth-child(2) .rating-card-place {
+      color: #c0c0c0;
+    }
+
+    &:nth-child(3) .rating-card-place {
+      color: #cd7f32;
+    }
+
+    .rating-card-item {
+      position: relative;
+      width: 250px;
+      height: 400px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+
+      .rating-hover-block {
+        opacity: 0;
+        width: 102%;
+        height: 102%;
+        background-color: transparent;
+        transition: all 0.5s ease-in-out;
+
+        .rating-bookname {
+          margin: 0;
+          padding-top: 20px;
+          color: $main-light-color;
+          font-size: 22px;
+          text-align: center;
+        }
+
+        .rating-mark {
+          position: absolute;
+          margin: 0;
+          bottom: 30%;
+          left: 0%;
+          padding: 7px 15px;
+          color: $main-light-color;
+          font-size: 26px;
+          background-color: $main-brown-color;
+          transform: translateX(-70px);
+          transition: all 0.5s ease-in-out;
+        }
+
+        .rating-btn {
+          position: absolute;
+          border: none;
+          bottom: 15%;
+          right: 0%;
+          padding: 7px 20px;
+          font-size: 24px;
+          color: $main-light-color;
+          background-color: $main-brown-color;
+          transform: translateX(70px);
+          transition: all 0.5s ease-in-out;
+
+          &:hover {
+            cursor: pointer;
+            color: $main-brown-color;
+            background-color: $main-light-color;
+          }
+        }
+      }
+
+      &:hover .rating-hover-block {
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.932);
+      }
+
+      &:hover .rating-mark,
+      &:hover .rating-btn {
+        transform: translateX(0);
+      }
+    }
+  }
+}

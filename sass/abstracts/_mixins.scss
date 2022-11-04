@@ -1,0 +1,29 @@
+@mixin container($width: 1130px) {
+    width: $width;
+    margin: 0 auto;
+}
+
+@mixin section-size($bgc: transperent) {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: $bgc;
+}
+
+@mixin background-image($bgi) {
+  background-image: url($bgi);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+@mixin achieve-common($bgc: transperent) {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  margin-right: 3px;
+  padding: 2px 5px;
+  border-radius: 15px;
+  line-height: 24px;
+  background-color: $bgc;
+  @content;
+}

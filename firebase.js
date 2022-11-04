@@ -40,7 +40,7 @@ const booksCardList = document.querySelector(".books-list");
 const contactsCardList = document.querySelector(".contacts-list");
 const modalTemplate = document.querySelector("#modalRating").innerHTML;
 
-const modal = document.querySelector("#modal");
+const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 
 getCardsData(ABOUT_DB_NAME, generateAboutCardHTML, aboutCardList);

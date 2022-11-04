@@ -1,0 +1,116 @@
+@use "../abstracts" as *;
+
+.contacts {
+  @include section-size;
+  @include background-image("/images/buse-doga.jpg");
+
+  &-background {
+    @include section-size(#1300029a);
+  }
+
+  &-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .contacts-container {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contacts-title {
+      font-size: 30px;
+      width: 70%;
+      margin: 0 auto;
+    }
+
+    .contacts-list {
+      flex-grow: 1;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      margin-top: 50px;
+
+      .contacts-cards-item {
+        flex-basis: 40%;
+        max-width: 320px;
+        min-height: 280px;
+        border-radius: 30px;
+        background-color: #b87d3067;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: $main-light-color;
+
+        .contacts-photo {
+          display: block;
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          margin-top: 20px;
+        }
+
+        .contacts-name {
+          margin: 0;
+          margin-top: 7px;
+          font-size: 24px;
+        }
+
+        .contacts-role {
+          margin: 0;
+          margin-top: 8px;
+          font-size: 18px;
+        }
+
+        .contacts-apps {
+          min-width: 100px;
+          min-height: 40px;
+          margin-top: 14px;
+          display: flex;
+          justify-content: space-around;
+
+          .contacts-link {
+            display: block;
+            text-decoration: none;
+            font-size: 30px;
+
+            &:hover {
+              background: $main-light-color;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+            }
+          }
+
+          .telegram {
+            background: -webkit-linear-gradient(#9c47fc, #356ad2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+          .instagram {
+            background: #d6249f;
+            background: radial-gradient(
+              circle at 30% 107%,
+              #fdf497 0%,
+              #fdf497 5%,
+              #fd5949 45%,
+              #d6249f 60%,
+              #285aeb 90%
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+        }
+      }
+    }
+  }
+
+  #footer {
+    width: 100%;
+    padding: 12px 0;
+    margin: 0;
+    color: $main-light-color;
+    background-color: #b87d3067;
+    text-align: center;
+  }
+}
