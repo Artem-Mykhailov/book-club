@@ -1,3 +1,16 @@
+import {
+  RATING_CARD_ITEM_SELECTOR,
+  SHOW_MODAL_CLASS,
+  modalTemplate,
+  modal,
+  overlay,
+  MEMBERS_DB_NAME,
+  RATING_DB_NAME,
+  BOOKS_DB_NAME,
+  ratingCardList,
+} from "../javascript/variables.js";
+
+import {generateMarksHTML} from '../javascript/htmlTemplates.js'
 import Swiper from "https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.browser.min.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
 import {
@@ -18,39 +31,33 @@ const firebaseConfig = {
   appId: "1:1060925473877:web:e23bb6ab3895725e5540dc",
   measurementId: "G-2BZ9FR37CL",
 };
+
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
-
-const ABOUT_DB_NAME = "about-cards";
-const RULES_DB_NAME = "rules";
-const MEMBERS_DB_NAME = "members";
-const RATING_DB_NAME = "rating";
-const BOOKS_DB_NAME = "books";
-const CONTACTS_DB_NAME = "contacts";
-
-const RATING_CARD_ITEM_SELECTOR = ".rating-slide";
-const SHOW_MODAL_CLASS = "show-modal";
 let ratingCardsData = [];
 
-const aboutCardList = document.querySelector(".about-cards");
-const rulesCardList = document.querySelector(".rules-cards");
-const membersCardList = document.querySelector(".swiper-wrapper");
-const ratingCardList = document.querySelector(".rating-list");
-const booksCardList = document.querySelector(".books-list");
-const contactsCardList = document.querySelector(".contacts-list");
-const modalTemplate = document.querySelector("#modalRating").innerHTML;
+// ANIMATION FUNCTIONS
 
-const modal = document.querySelector(".modal");
-const overlay = document.querySelector(".overlay");
+export function checkElement(list, classname) {
+  let elements = document.querySelectorAll(list);
+  elements = Array.from(elements);
 
-getCardsData(ABOUT_DB_NAME, generateAboutCardHTML, aboutCardList);
-getCardsData(RULES_DB_NAME, generateRulesCardHTML, rulesCardList);
-getCardsData(MEMBERS_DB_NAME, generateMembersCardHTML, membersCardList);
-getCardsData(RATING_DB_NAME, generateRatingCardHTML, ratingCardList);
-getCardsData(BOOKS_DB_NAME, generateBooksCardHTML, booksCardList);
-getCardsData(CONTACTS_DB_NAME, generateContactCardHTML, contactsCardList);
+  const triggerBottom = (window.innerHeight / 5) * 4;
 
-function getCardsData(dbName, generate, list) {
+  elements.forEach((item) => {
+    const itemTop = item.getBoundingClientRect().top;
+
+    if (itemTop < triggerBottom) {
+      item.classList.add(classname);
+    } else {
+      item.classList.remove(classname);
+    }
+  });
+}
+
+//   FIREBASE FUNCTIONS
+
+export function getCardsData(dbName, generate, list) {
   const dbRef = ref(db);
 
   get(child(dbRef, dbName)).then((snapshot) => {
@@ -159,102 +166,6 @@ function onOverlayClick(e) {
 function renderCardList(cardList, generate, list) {
   const html = cardList.map(generate).join("");
   list.insertAdjacentHTML("beforeend", html);
-}
-
-function generateAboutCardHTML(card) {
-  return `<li class='about-cards-item'>
-      <h3 class='about-card-title'>${card.question}</h3>
-      <p class="about-card-description">${card.description}</p>
-    </li>
-    `;
-}
-
-function generateRulesCardHTML(card) {
-  return `<li class='rules-cards-item'>
-      <p class="rules-card-description">${card.rule}</p>
-    </li>
-    `;
-}
-
-function generateMembersCardHTML(card) {
-  return `<div class='swiper-slide members-slide'>
-      <div class="members-card-image">
-        <img class="card-image" src="${card.src}" />
-      </div>
-      <div class="members-card-text">
-        <p class="card-name">${card.name}</p>
-        <div class="card-achievements">${card.achievements}</div>
-        <p class="card-status">${card.status}</p>
-      </div>
-    </div>
-    `;
-}
-
-function generateRatingCardHTML(card) {
-  return `
-    <div class='swiper-slide rating-slide' data-id=${card.place}>
-      <div class="rating-card-item" style="background-image: url('${card.src}')">
-        <div class="rating-hover-block">
-          <p class="rating-bookname">${card.bookName}</p>
-          <div class="rating-mark">${card.mark}</div>
-          <button class="rating-btn">Деталі</button>
-        </div>
-      </div>
-      <div class="rating-card-place">${card.place}</div>
-    </div>
-  `;
-}
-
-function generateMarksHTML(marks) {
-  const GOOD_MARK_CLASS = "good-mark";
-  const MEDIOCRE_MARK_CLASS = "mediocre-mark";
-  const BAD_MARK_CLASS = "bad-mark";
-  let mark;
-
-  if (marks.mark > 7) {
-    mark = GOOD_MARK_CLASS;
-  } else if (marks.mark > 4) {
-    mark = MEDIOCRE_MARK_CLASS;
-  } else {
-    mark = BAD_MARK_CLASS;
-  }
-
-  return `<li class='mark-item'>
-      <p class="mark-item-name">${marks.name}</p>
-      <p class="mark-item-value ${mark}">${marks.mark}</p>
-    </li>
-    `;
-}
-
-function generateBooksCardHTML(card) {
-  return `
-    <div class='swiper-slide flip-card'>
-    <div class='card-container'>
-      <div class="flip-card-inner">
-          <div class="flip-card-front" style="background-image: url('${card.src}')"></div>
-          <div class="flip-card-back">
-            <h2 class='books-card-name'>${card.name}</h2>
-            <p class='books-card-title'>Автор: ${card.author}</p>
-            <p class='books-card-title'>${card.suggested}</p>
-            <p class='books-card-description'>${card.description}</p>
-          </div>
-      </div>
-      </div>
-    </div>
-  `;
-}
-
-function generateContactCardHTML(card) {
-  return `<li class='contacts-cards-item'>
-      <img src='${card.src}' alt="profile photo" class="contacts-photo"/>
-      <h2 class="contacts-name">${card.name}</h2>
-      <p class="contacts-role">${card.role}</p>
-      <div class="contacts-apps">
-        <a href="${card.telegram}" class="fa-brands fa-telegram contacts-link telegram"></a>
-        <a href="${card.instagram}" class="fa-brands fa-instagram contacts-link instagram"></a>
-      </div>
-    </li>
-    `;
 }
 
 function createMembersSwiper() {

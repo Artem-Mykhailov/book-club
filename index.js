@@ -1,15 +1,43 @@
-const textWrapper = document.querySelector(".quote-text");
-const authorWrapper = document.querySelector(".quote-author");
-const blockWrapper = document.querySelector(".quote-block");
-const header = document.querySelector("#header");
-const background = document.querySelector(".background");
-const toTopIcon = document.querySelector(".to-top-icon");
+import { getCardsData, checkElement } from "./javascript/functions.js";
+import {
+  generateAboutCardHTML,
+  generateRulesCardHTML,
+  generateMembersCardHTML,
+  generateRatingCardHTML,
+  generateBooksCardHTML,
+  generateContactCardHTML,
+} from "./javascript/htmlTemplates.js";
+import {
+  ABOUT_DB_NAME,
+  aboutCardList,
+  RULES_DB_NAME,
+  rulesCardList,
+  MEMBERS_DB_NAME,
+  membersCardList,
+  RATING_DB_NAME,
+  ratingCardList,
+  BOOKS_DB_NAME,
+  booksCardList,
+  CONTACTS_DB_NAME,
+  contactsCardList,
+  textWrapper,
+  authorWrapper,
+  header,
+  background,
+  toTopIcon,
+  FADE_ANIMATION_SELECTOR,
+  SHOW_CLASS,
+  ABOUT_CARD_SELECTOR,
+  RULES_CARD_SELECTOR,
+  SHOW_ABOUT_CARD_CLASS,
+} from "./javascript/variables.js";
 
-const FADE_ANIMATION_SELECTOR = ".fade-animation";
-const SHOW_CLASS = "show";
-const ABOUT_CARD_SELECTOR = ".about-cards-item";
-const RULES_CARD_SELECTOR = ".rules-cards-item";
-const SHOW_ABOUT_CARD_CLASS = "showCard";
+getCardsData(ABOUT_DB_NAME, generateAboutCardHTML, aboutCardList);
+getCardsData(RULES_DB_NAME, generateRulesCardHTML, rulesCardList);
+getCardsData(MEMBERS_DB_NAME, generateMembersCardHTML, membersCardList);
+getCardsData(RATING_DB_NAME, generateRatingCardHTML, ratingCardList);
+getCardsData(BOOKS_DB_NAME, generateBooksCardHTML, booksCardList);
+getCardsData(CONTACTS_DB_NAME, generateContactCardHTML, contactsCardList);
 
 function wait() {
   return new Promise((resolve, reject) => {
@@ -23,23 +51,6 @@ async function getCards() {
   await wait();
   checkElement(ABOUT_CARD_SELECTOR, SHOW_ABOUT_CARD_CLASS);
   checkElement(RULES_CARD_SELECTOR, SHOW_ABOUT_CARD_CLASS);
-}
-
-function checkElement(list, classname) {
-  let elements = document.querySelectorAll(list);
-  elements = Array.from(elements);
-
-  const triggerBottom = (window.innerHeight / 5) * 4;
-
-  elements.forEach((item) => {
-    const itemTop = item.getBoundingClientRect().top;
-
-    if (itemTop < triggerBottom) {
-      item.classList.add(classname);
-    } else {
-      item.classList.remove(classname);
-    }
-  });
 }
 
 textWrapper.innerHTML = textWrapper.textContent.replace(
