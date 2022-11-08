@@ -1,7 +1,7 @@
 @use "../abstracts" as *;
 
 .rating {
-  @include background-image("/images/library.jpg");
+  @include background-image("/src/images/library.jpg");
   @include section-size;
   position: relative;
 

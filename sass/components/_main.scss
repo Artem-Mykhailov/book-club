@@ -26,6 +26,7 @@ html {
 body {
   margin: 0;
   font-family: "Raleway", sans-serif;
+  user-select: none;
 }
 
 .container {
@@ -61,22 +62,23 @@ body {
 }
 
 .swiper-pagination-bullet {
-  width: 15px;
-  height: 15px;
-  background: $main-light-color;
+  width: 15px !important;
+  height: 15px !important;
+  background: $main-light-color !important;
 }
 
-.swiper-button-prev,
-.swiper-button-next {
+.swiper-button-prev::after,
+.swiper-button-next::after {
   color: $main-light-color;
 }
 
-.swiper-button-prev:hover,
-.swiper-button-next:hover {
-  color: $main-brown-color;
+.swiper-button-prev:hover::after,
+.swiper-button-next:hover::after {
+  color: $main-brown-color; 
+  cursor: pointer;
 }
 
-.swiper-button-prev.swiper-button-disabled,
-.swiper-button-next.swiper-button-disabled {
-  opacity: 0;
+.swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled {
+  opacity: 0 !important;
 }

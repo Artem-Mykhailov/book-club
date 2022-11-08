@@ -2,11 +2,13 @@
 
 .contacts {
   @include section-size;
-  @include background-image("/images/buse-doga.jpg");
+  @include background-image("/src/images/buse-doga.jpg");
 
   &-background {
     @include section-size(#1300029a);
   }
+
+  
 
   &-flex {
     display: flex;

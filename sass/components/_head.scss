@@ -2,7 +2,7 @@
 
 #head {
     @include section-size;
-    @include background-image("/images/quote2.jpg");
+    @include background-image("/src/images/quote2.jpg");
     padding-top: $nav-height;
   
     .header--hidden {
