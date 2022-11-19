@@ -8,8 +8,6 @@
     @include section-size(#1300029a);
   }
 
-  
-
   &-flex {
     display: flex;
     flex-direction: column;
@@ -114,5 +112,44 @@
     color: $main-light-color;
     background-color: #b87d3067;
     text-align: center;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .contacts {
+    @include background-image("/src/images/buse-doga-mob.jpg");
+    background-size: auto;
+    background-attachment: scroll;
+
+    &-background {
+      padding-top: 50px;
+    }
+
+    .container {
+      @include container(90%);
+    }
+
+    &-flex {
+      .contacts-title {
+        font-size: 21px;
+        width: 100%;
+      }
+
+      .contacts-list {
+        padding-left: 0;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+
+        .contacts-cards-item {
+          min-width: 65vw;
+          min-height: 250px;
+        }
+      }
+    }
+
+    #footer {
+      font-size: 14px;
+    }
   }
 }

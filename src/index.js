@@ -3,27 +3,42 @@ import "./styles/index.css";
 import {
   onWindowScroll,
   renderCardList,
+  renderRulesContainer,
   createMembersSwiper,
+  createMembersSwiperMobile,
   createRatingSwiper,
+  createRatingSwiperMobile,
   createBooksSwiper,
+  createBooksSwiperMobile,
+  createRulesSwiper,
   sortCardsByPlace,
   getRatingDetails,
 } from "./javascript/functions.js";
 import {
   generateAboutCardHTML,
-  generateRulesCardHTML,
+  generateRulesCardDesktopHTML,
+  generateRulesContainerMobileHTML,
+  generateRulesCardMobileHTML,
   generateMembersCardHTML,
   generateRatingCardHTML,
   generateBooksCardHTML,
   generateContactCardHTML,
 } from "./javascript/htmlTemplates.js";
-import {
-  DB_NAMES,
-  firebaseDOM,
-  animationDOM,
-} from "./javascript/variables.js";
+import { DB_NAMES, firebaseDOM, animationDOM, ANIMATION_CLASSES } from "./javascript/variables.js";
 
 export let ratingCardsData = [];
+
+animationDOM.icnMenu.addEventListener("click", () => {
+  animationDOM.icnMenu.classList.toggle(ANIMATION_CLASSES.ACTIVE_CLASS);
+  animationDOM.menu.classList.toggle(ANIMATION_CLASSES.SHOW_CLASS);
+});
+
+animationDOM.menu.addEventListener("click", (e) => {
+  if (e.target.classList.contains(ANIMATION_CLASSES.MENU_BUTTON)) {
+    animationDOM.menu.classList.remove(ANIMATION_CLASSES.SHOW_CLASS);
+    animationDOM.icnMenu.classList.remove(ANIMATION_CLASSES.ACTIVE_CLASS);
+  }
+});
 
 window.addEventListener("scroll", onWindowScroll);
 
@@ -32,12 +47,34 @@ FirebaseAPI.getCardsData(DB_NAMES.ABOUT).then((cards) => {
 });
 
 FirebaseAPI.getCardsData(DB_NAMES.RULES).then((cards) => {
-  renderCardList(cards, generateRulesCardHTML, firebaseDOM.rulesCardList);
+  if (window.screen.width <= 768) {
+    renderRulesContainer(
+      generateRulesContainerMobileHTML,
+      firebaseDOM.rulesCardContainer
+    );
+
+    const rulesCardList = document.querySelector(".rules-cards");
+
+    renderCardList(cards, generateRulesCardMobileHTML, rulesCardList);
+    createRulesSwiper();
+  } else {
+    firebaseDOM.rulesCardContainer.classList.add("rules-desktop");
+    renderCardList(
+      cards,
+      generateRulesCardDesktopHTML,
+      firebaseDOM.rulesCardContainer
+    );
+  }
 });
 
 FirebaseAPI.getCardsData(DB_NAMES.MEMBERS).then((cards) => {
   renderCardList(cards, generateMembersCardHTML, firebaseDOM.membersCardList);
-  createMembersSwiper();
+
+  if (window.screen.width <= 768) {
+    createMembersSwiperMobile();
+  } else {
+    createMembersSwiper();
+  }
 });
 
 FirebaseAPI.getCardsData(DB_NAMES.RATING)
@@ -45,13 +82,37 @@ FirebaseAPI.getCardsData(DB_NAMES.RATING)
   .then((cards) => {
     ratingCardsData = cards;
     renderCardList(cards, generateRatingCardHTML, firebaseDOM.ratingCardList);
-    createRatingSwiper();
+
+    if (window.screen.width <= 768) {
+      createRatingSwiperMobile();
+    } else {
+      createRatingSwiper();
+    }
+
     getRatingDetails();
   });
 
 FirebaseAPI.getCardsData(DB_NAMES.BOOKS).then((cards) => {
   renderCardList(cards, generateBooksCardHTML, firebaseDOM.booksCardList);
-  createBooksSwiper();
+
+  if (window.screen.width <= 768) {
+    createBooksSwiperMobile();
+
+    firebaseDOM.booksCardList.addEventListener("click", (e) => {
+
+      if (e.target.classList.contains("flip-card-front")) {
+        const card = e.target.closest('.flip-card-inner');
+        card.classList.add(ANIMATION_CLASSES.ACTIVE_CLASS);
+      } 
+      if (e.target.classList.contains("book-close-button")) {
+        const card = e.target.closest('.flip-card-inner');
+        card.classList.remove(ANIMATION_CLASSES.ACTIVE_CLASS);
+      } 
+      
+    })
+  } else {
+    createBooksSwiper();
+  }
 });
 
 FirebaseAPI.getCardsData(DB_NAMES.CONTACTS).then((cards) => {

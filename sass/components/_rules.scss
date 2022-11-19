@@ -15,13 +15,19 @@
     z-index: -1;
   }
 
-  &-cards {
+  &-cards-container {
+    height: 100%;
+    width: 100%;
+  }
+
+  &-desktop {
+    max-width: 1400px;
     min-height: 680px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-content: space-around;
-    margin: 0;
+    margin: 0 auto;
     padding: 50px;
     list-style: none;
 
@@ -65,6 +71,55 @@
         color: $main-light-color;
         font-size: 20px;
         text-align: center;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .rules {
+    padding-top: 55px;
+    display: flex;
+    flex-direction: column;
+
+    &-cards-container {
+      position: relative;
+      flex-grow: 1;
+      min-height: 60vh;
+      margin-top: 40%;
+    }
+
+    &-cards {
+      margin-bottom: 150px;
+
+      .rules-mobile-item {
+        display: flex;
+        align-items: center;
+        max-width: 70%;
+        min-height: 30vh;
+        text-align: center;
+        padding: 10px;
+        border: 2px solid #b87e30;
+        border-radius: 30px;
+        background-color: transparent;
+        overflow: hidden;
+
+        &:before {
+          content: "\f071";
+          font-family: FontAwesome;
+          position: absolute;
+          top: 5%;
+          left: 45%;
+          color: $main-brown-color;
+          font-size: 26px;
+        }
+
+        .rules-card-description {
+          margin: 0;
+          color: $main-light-color;
+          font-size: 20px;
+          text-align: center;
+        }
       }
     }
   }

@@ -73,6 +73,11 @@ export function renderCardList(cardList, generate, list) {
   list.insertAdjacentHTML("beforeend", html);
 }
 
+export function renderRulesContainer(generate, list) {
+  const html = generate();
+  list.insertAdjacentHTML("beforeend", html);
+}
+
 export function createMembersSwiper() {
   new Swiper(".members-swiper", {
     modules: [Pagination, EffectCoverflow],
@@ -95,6 +100,20 @@ export function createMembersSwiper() {
   });
 }
 
+export function createMembersSwiperMobile() {
+  new Swiper(".members-swiper", {
+    modules: [Pagination],
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: "auto",
+    pagination: {
+      el: ".swiper-pagination",
+      dynamicBullets: true,
+      clickable: true,
+    },
+  });
+}
+
 export function createRatingSwiper() {
   return new Swiper(SWIPER.RATING, {
     modules: [Navigation],
@@ -108,6 +127,20 @@ export function createRatingSwiper() {
   });
 }
 
+export function createRatingSwiperMobile() {
+  return new Swiper(SWIPER.RATING, {
+    modules: [Pagination],
+    slidesPerView: "1",
+    spaceBetween: 30,
+    slidesPerGroup: 1,
+    pagination: {
+      el: ".swiper-pagination",
+      dynamicBullets: true,
+      clickable: true,
+    },
+  });
+}
+
 export function createBooksSwiper() {
   return new Swiper(SWIPER.BOOKS, {
     modules: [Navigation],
@@ -116,6 +149,36 @@ export function createBooksSwiper() {
     navigation: {
       nextEl: SWIPER.BTN_NEXT,
       prevEl: SWIPER.BTN_PREV,
+    },
+  });
+}
+
+export function createBooksSwiperMobile() {
+  return new Swiper(SWIPER.BOOKS, {
+    modules: [Pagination],
+    slidesPerGroup: 1,
+    spaceBetween: 30,
+    centeredSlides: true,
+    slidesPerView: "auto",
+    pagination: {
+      el: ".swiper-pagination",
+      dynamicBullets: true,
+      clickable: true,
+    },
+  });
+}
+
+export function createRulesSwiper() {
+  return new Swiper(SWIPER.RULES, {
+    modules: [Pagination],
+    grabCursor: true,
+    spaceBetween: 60,
+    centeredSlides: true,
+    slidesPerView: "auto",
+    pagination: {
+      el: ".swiper-pagination",
+      dynamicBullets: true,
+      clickable: true,
     },
   });
 }

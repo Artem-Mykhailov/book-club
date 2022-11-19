@@ -26,7 +26,7 @@
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  width: 650px;
+  max-width: 650px;
   min-height: 300px;
   border-radius: 15px;
   background-color: $main-light-color;
@@ -129,5 +129,12 @@
         background-color: #ea9999;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .modal {
+    top: 12%;
+    max-width: 90%;
   }
 }

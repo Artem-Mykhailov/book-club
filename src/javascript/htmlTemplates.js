@@ -7,11 +7,28 @@ export function generateAboutCardHTML(card) {
       `;
 }
 
-export function generateRulesCardHTML(card) {
+export function generateRulesCardDesktopHTML(card) {
   return `
-      <li class='rules-cards-item'>
+      <div class='rules-desktop-item'>
         <p class="rules-card-description">${card.rule}</p>
-      </li>
+      </div>
+      `;
+}
+
+export function generateRulesContainerMobileHTML() {
+  return `
+      <div class="swiper rules-swiper fade-animation">
+        <div class="swiper-wrapper rules-cards"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+      `;
+}
+
+export function generateRulesCardMobileHTML(card) {
+  return `
+      <div class='swiper-slide rules-mobile-item'>
+        <p class="rules-card-description">${card.rule}</p>
+      </div>
       `;
 }
 
@@ -74,10 +91,11 @@ export function generateBooksCardHTML(card) {
             <div class="flip-card-inner">
                 <div class="flip-card-front" style="background-image: url('${card.src}')"></div>
                 <div class="flip-card-back">
-                    <h2 class='books-card-name'>${card.name}</h2>
-                    <p class='books-card-title'>Автор: ${card.author}</p>
-                    <p class='books-card-title'>${card.suggested}</p>
-                    <p class='books-card-description'>${card.description}</p>
+                  <button class="book-close-button fa-solid fa-xmark"></button>
+                  <h2 class='books-card-name'>${card.name}</h2>
+                  <p class='books-card-title'>Автор: ${card.author}</p>
+                  <p class='books-card-title'>${card.suggested}</p>
+                  <p class='books-card-description'>${card.description}</p>
                 </div>
             </div>
         </div>
@@ -98,5 +116,3 @@ export function generateContactCardHTML(card) {
       </li>
       `;
 }
-
-
