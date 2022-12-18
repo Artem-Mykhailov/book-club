@@ -139,8 +139,9 @@
 
     .swiper-pagination {
       position: absolute;
-      top: 75%;
-      right: -10%;
+      right: 20%;
+      max-width: 29vw;
+      top: 81%;
     }
 
     &-cards {
@@ -162,8 +163,9 @@
         border-radius: 30px;
         overflow: hidden;
 
-        &:nth-child(8),
-        &:nth-child(10) {
+        &:nth-child(3),
+        &:nth-child(7),
+        &:nth-child(9) {
           .members-card-image {
             .card-image {
               object-position: center;

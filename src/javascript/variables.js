@@ -32,6 +32,7 @@ export const DB_NAMES = {
   RULES: "rules",
   MEMBERS: "members",
   RATING: "rating",
+  READING: "reading",
   BOOKS: "books",
   CONTACTS: "contacts",
 };
@@ -41,6 +42,7 @@ export const firebaseDOM = {
   rulesCardContainer: document.querySelector(".rules-cards-container"),
   membersCardList: document.querySelector(".members-list"),
   ratingCardList: document.querySelector(".rating-list"),
+  readingCard: document.querySelector(".reading-module"),
   booksCardList: document.querySelector(".books-list"),
   contactsCardList: document.querySelector(".contacts-list"),
 };

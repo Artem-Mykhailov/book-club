@@ -21,10 +21,16 @@ import {
   generateRulesCardMobileHTML,
   generateMembersCardHTML,
   generateRatingCardHTML,
+  generateReadingCardHTML,
   generateBooksCardHTML,
   generateContactCardHTML,
 } from "./javascript/htmlTemplates.js";
-import { DB_NAMES, firebaseDOM, animationDOM, ANIMATION_CLASSES } from "./javascript/variables.js";
+import {
+  DB_NAMES,
+  firebaseDOM,
+  animationDOM,
+  ANIMATION_CLASSES,
+} from "./javascript/variables.js";
 
 export let ratingCardsData = [];
 
@@ -92,6 +98,10 @@ FirebaseAPI.getCardsData(DB_NAMES.RATING)
     getRatingDetails();
   });
 
+FirebaseAPI.getCardsData(DB_NAMES.READING).then((cards) => {
+  renderCardList(cards, generateReadingCardHTML, firebaseDOM.readingCard);
+});
+
 FirebaseAPI.getCardsData(DB_NAMES.BOOKS).then((cards) => {
   renderCardList(cards, generateBooksCardHTML, firebaseDOM.booksCardList);
 
@@ -99,17 +109,15 @@ FirebaseAPI.getCardsData(DB_NAMES.BOOKS).then((cards) => {
     createBooksSwiperMobile();
 
     firebaseDOM.booksCardList.addEventListener("click", (e) => {
-
       if (e.target.classList.contains("flip-card-front")) {
-        const card = e.target.closest('.flip-card-inner');
+        const card = e.target.closest(".flip-card-inner");
         card.classList.add(ANIMATION_CLASSES.ACTIVE_CLASS);
-      } 
+      }
       if (e.target.classList.contains("book-close-button")) {
-        const card = e.target.closest('.flip-card-inner');
+        const card = e.target.closest(".flip-card-inner");
         card.classList.remove(ANIMATION_CLASSES.ACTIVE_CLASS);
-      } 
-      
-    })
+      }
+    });
   } else {
     createBooksSwiper();
   }

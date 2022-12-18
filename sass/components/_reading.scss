@@ -1,0 +1,86 @@
+@use "../abstracts" as *;
+
+#reading {
+  @include section-size($main-dark-color);
+
+  .reading-module {
+    display: flex;
+    padding-top: 30px;
+    min-height: 80vh;
+
+    .reading-text {
+      flex-basis: 60%;
+      padding-top: 9%;
+      display: flex;
+      flex-direction: column;
+      color: $main-light-color;
+
+      &-name {
+        margin: 0;
+        margin-bottom: 12px;
+        text-align: center;
+        font-size: 28px;
+      }
+
+      &-title {
+        margin: 0;
+        margin-bottom: 12px;
+        text-align: center;
+        font-size: 21px;
+      }
+
+      &-description {
+        align-self: center;
+        max-width: 70%;
+        margin: 0;
+        font-style: italic;
+        text-align: center;
+        line-height: 22px;
+      }
+    }
+
+    .reading-image {
+      flex-basis: 39%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      &-cover {
+        max-width: 350px;
+        max-height: 450px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #reading {
+    overflow: hidden;
+    padding-top: 45px;
+    .container {
+      @include container;
+    }
+
+    .reading-module {
+        flex-direction: column-reverse;
+
+        .reading-text {
+            padding-top: 4%;
+      
+            &-description {
+                max-width: 85%;
+                margin-bottom: 30px;
+            }
+          }
+      
+          .reading-image {
+      
+            &-cover {
+              max-width: 250px;
+              max-height: 350px;
+            }
+          }
+    }
+  }
+}

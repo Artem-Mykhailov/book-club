@@ -84,6 +84,21 @@ export function generateMarksHTML(marks) {
       `;
 }
 
+export function generateReadingCardHTML(card) {
+  return `
+      <div class='reading-text'>
+        <h2 class='reading-text-name fade-animation'>${card.name}</h2>
+        <p class='reading-text-title fade-animation'>Автор: ${card.author}</p>
+        <p class='reading-text-title fade-animation'>${card.suggested}</p>
+        <p class='reading-text-description fade-animation'>${card.description}</p>
+      </div>
+
+      <div class='reading-image fade-animation'>
+        <img src='${card.src}' alt="book cover" class="reading-image-cover"/>
+      </div>
+      `;
+}
+
 export function generateBooksCardHTML(card) {
   return `
       <div class='swiper-slide flip-card'>

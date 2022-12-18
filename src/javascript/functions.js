@@ -8,7 +8,7 @@ import {
 
 import { ratingCardsData } from "../index.js";
 import { generateMarksHTML } from "../javascript/htmlTemplates.js";
-import Swiper, { Navigation, Pagination, EffectCoverflow } from "swiper";
+import Swiper, { Navigation, Pagination } from "swiper";
 import "swiper/css/bundle";
 
 // ANIMATION FUNCTIONS
@@ -80,18 +80,10 @@ export function renderRulesContainer(generate, list) {
 
 export function createMembersSwiper() {
   new Swiper(".members-swiper", {
-    modules: [Pagination, EffectCoverflow],
+    modules: [Pagination],
     grabCursor: true,
-    effect: "coverflow",
     centeredSlides: true,
     slidesPerView: "auto",
-    coverflowEffect: {
-      rotate: 50,
-      stretch: 0,
-      depth: 100,
-      modifier: 1,
-      slideShadows: true,
-    },
     pagination: {
       el: ".swiper-pagination",
       dynamicBullets: true,
@@ -103,7 +95,6 @@ export function createMembersSwiper() {
 export function createMembersSwiperMobile() {
   new Swiper(".members-swiper", {
     modules: [Pagination],
-    grabCursor: true,
     centeredSlides: true,
     slidesPerView: "auto",
     pagination: {
@@ -157,7 +148,6 @@ export function createBooksSwiperMobile() {
   return new Swiper(SWIPER.BOOKS, {
     modules: [Pagination],
     slidesPerGroup: 1,
-    spaceBetween: 30,
     centeredSlides: true,
     slidesPerView: "auto",
     pagination: {
@@ -172,7 +162,7 @@ export function createRulesSwiper() {
   return new Swiper(SWIPER.RULES, {
     modules: [Pagination],
     grabCursor: true,
-    spaceBetween: 60,
+    spaceBetween: 65,
     centeredSlides: true,
     slidesPerView: "auto",
     pagination: {

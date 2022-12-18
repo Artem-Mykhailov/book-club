@@ -1,11 +1,10 @@
 @use "../abstracts" as *;
 
 .contacts {
-  @include section-size;
-  @include background-image("/src/images/buse-doga.jpg");
+  @include section-size($main-dark-color);
 
   &-background {
-    @include section-size(#1300029a);
+    @include section-size;
   }
 
   &-flex {
@@ -26,22 +25,29 @@
     }
 
     .contacts-list {
-      flex-grow: 1;
       display: flex;
       justify-content: space-around;
       align-items: flex-start;
-      margin-top: 50px;
+      padding-left: 0;
+      margin: 50px 0;
 
       .contacts-cards-item {
         flex-basis: 40%;
         max-width: 320px;
         min-height: 280px;
         border-radius: 30px;
-        background-color: #b87d3067;
         display: flex;
         flex-direction: column;
         align-items: center;
         color: $main-light-color;
+        border: 2px solid #b87e30;
+        background-color: transparent;
+        overflow: hidden;
+        transition: all 1s ease-in-out;
+  
+        &:hover {
+          background-color: #b87d3060;
+        }
 
         .contacts-photo {
           display: block;
@@ -74,6 +80,7 @@
             display: block;
             text-decoration: none;
             font-size: 30px;
+            transition: all 0.3s ease-in-out;
 
             &:hover {
               background: $main-light-color;
@@ -103,6 +110,50 @@
         }
       }
     }
+
+    .contacts-channel {
+      align-self: center;
+      display: flex;
+      flex-direction: column;
+      max-width: 37%;
+      padding: 14px;
+      border-radius: 30px;
+      border: 2px solid #b87e30;
+      background-color: transparent;
+      overflow: hidden;
+      transition: all 1s ease-in-out;
+
+      &:hover {
+        background-color: #b87d3060;
+      }
+
+      &-title {
+        margin: 0;
+        color: $main-light-color;
+        font-weight: normal;
+        text-align: center;
+      }
+
+      &-link {
+        align-self: center;
+        display: block;
+        margin-top: 15px;
+        padding: 7px 14px;
+        background-color: #f4eee8de;
+        color: $main-brown-color;
+        font-size: 20px;
+        text-align: center;
+        cursor: pointer;
+        text-decoration: none;
+        border-radius: 30px;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          background-color: $main-brown-color;
+          color: #f4eee8de;
+        }
+      }
+    }
   }
 
   #footer {
@@ -117,13 +168,6 @@
 
 @media only screen and (max-width: 768px) {
   .contacts {
-    @include background-image("/src/images/buse-doga-mob.jpg");
-    background-size: auto;
-    background-attachment: scroll;
-
-    &-background {
-      padding-top: 50px;
-    }
 
     .container {
       @include container(90%);
@@ -140,11 +184,18 @@
         flex-direction: column;
         align-items: center;
         margin-top: 20px;
+        margin-bottom: 0;
 
         .contacts-cards-item {
           min-width: 65vw;
           min-height: 250px;
+          margin-bottom: 30px;
         }
+      }
+
+      .contacts-channel {
+        min-width: 65vw;
+        margin-bottom: 30px;
       }
     }
 
