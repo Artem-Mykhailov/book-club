@@ -94,11 +94,14 @@
     margin-bottom: 10px;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 
     .mark-item {
+      min-width: 10%;
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin-bottom: 5px;
 
       &-name {
         margin: 0;
@@ -136,5 +139,11 @@
   .modal {
     top: 12%;
     max-width: 90%;
+
+    &-marks-list {
+      .mark-item {
+        min-width: 19%;
+      }
+    }
   }
 }
