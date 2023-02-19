@@ -21,7 +21,7 @@
   }
 
   &-desktop {
-    max-width: 1400px;
+    max-width: 1350px;
     min-height: 680px;
     display: flex;
     flex-wrap: wrap;
@@ -33,9 +33,10 @@
 
     &-item {
       position: relative;
-      flex-basis: 17%;
+      flex-basis: 21%;
       display: flex;
       align-content: start;
+      margin-bottom: 30px;
       padding: 10px;
       padding-top: 28px;
       border: 2px solid #b87e30;

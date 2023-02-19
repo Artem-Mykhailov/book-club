@@ -152,6 +152,10 @@
             height: 450px;
           }
 
+          &-front {
+            background-size: cover;
+          }
+
           &-back {
             position: relative;
             .book-close-button {

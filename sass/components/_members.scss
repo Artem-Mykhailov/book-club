@@ -164,11 +164,20 @@
         overflow: hidden;
 
         &:nth-child(3),
-        &:nth-child(7),
-        &:nth-child(9) {
+        &:nth-child(6),
+        &:nth-child(8),
+        &:nth-child(13) {
           .members-card-image {
             .card-image {
               object-position: center;
+            }
+          }
+        }
+
+        &:nth-child(11) {
+          .members-card-image {
+            .card-image {
+              object-position: bottom;
             }
           }
         }
@@ -209,6 +218,7 @@
 
           .card-status {
             left: 20%;
+            bottom: 5%;
           }
         }
       }
